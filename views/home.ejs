@@ -1,0 +1,33 @@
+<%- include("partials/header"); -%>
+    <h1>Home</h1>
+    <form method="get" action="/compose">
+        <button type="submit">Compose</button>
+    </form>
+
+    <p>
+        <%=homeContent%>
+    </p>
+
+
+
+
+
+    <% posts.forEach((post)=>{ %>
+        <h1>
+            <%= post.title %>
+        </h1>
+        <p class="paragraph">
+            <% let currentString = post.content %>
+            <% requiredString = currentString.substring(0,100) %>
+            <%= requiredString  %>
+            <% if( currentString.length > 100){ %>
+              ...
+                <a href="/posts/<%= post.title %> "> Read More</a>
+            <% } %>    
+        </p>
+        
+        <% }); %>
+
+      
+
+            <%- include("partials/footer"); -%>
